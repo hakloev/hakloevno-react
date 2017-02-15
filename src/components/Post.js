@@ -19,19 +19,19 @@ renderer.code = (code, language) => {
 
 class Post extends React.Component {
 
-	render() {
-		const { data: post } = this.props;
-		console.log(post.url)
-		return (
-			<article className="article">
-				<header>
-					<h1>{post.title}</h1>
-					<h6>{Moment(post.created).format('dddd, Do of MMMM YYYY')}</h6>
-				</header>
-				<div dangerouslySetInnerHTML={ { __html: marked(post.body, { sanitize: true, renderer }) } } />
-			</article>
-		);
-	};
+  render() {
+    const { data: post } = this.props;
+    console.log(post.url)
+    return (
+      <article className="article">
+        <header>
+          <h1>{post.title}</h1>
+          <h6>{Moment(post.created).format('dddd, Do of MMMM YYYY')}</h6>
+        </header>
+        <div dangerouslySetInnerHTML={{ __html: marked(post.body, { sanitize: true, renderer }) }} />
+      </article>
+    );
+  };
 }
 
 export default Post;

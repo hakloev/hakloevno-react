@@ -20,11 +20,11 @@ const store = configureStore(preloadedState);
 
 try {
   ReactDOM.render(
-		<HMRContainer>
-			<App store={store}/>
-		</HMRContainer>,
-		appMount
-	);
+    <HMRContainer>
+      <App store={store} />
+    </HMRContainer>,
+    appMount
+  );
 
   if (module.hot) {
     module.hot.accept(() => {

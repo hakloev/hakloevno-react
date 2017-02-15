@@ -11,7 +11,7 @@ import Test from './components/Test';
 export default (
   <Route path="/" component={MainLayout}>
     <IndexRoute component={Home} />
-		<Route path="/test" component={Test} />
+    <Route path="/test" component={Test} />
     {/*<Route status={404} path="*" component={NotFound} />*/}
   </Route>
 );
