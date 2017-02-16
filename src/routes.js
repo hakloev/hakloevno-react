@@ -3,15 +3,13 @@ import { Route, IndexRoute } from 'react-router';
 
 import MainLayout from './layout/MainLayout';
 import Home from './containers/Home';
-
+import Article from './containers/Article';
 // import NotFound from './components/NotFound.jsx';
-import Test from './components/Test';
-
 
 export default (
   <Route path="/" component={MainLayout}>
     <IndexRoute component={Home} />
-    <Route path="/test" component={Test} />
+    <Route path="/articles/:slug" component={Article} />
     {/*<Route status={404} path="*" component={NotFound} />*/}
   </Route>
 );

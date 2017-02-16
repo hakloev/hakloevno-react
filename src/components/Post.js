@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 import marked, { Renderer } from 'marked';
 import highlight from 'highlightjs';
 import Moment from 'moment';
@@ -25,13 +26,13 @@ class Post extends React.Component {
     return (
       <article className="article">
         <header>
-          <h1>{post.title}</h1>
+          <Link to={`/articles/${post.slug}`}><h1>{post.title}</h1></Link>
           <h6>{Moment(post.created).format('dddd, Do of MMMM YYYY')}</h6>
         </header>
         <section className="article-ingress">
-          {post.ingress}
+          <div dangerouslySetInnerHTML={{ __html: marked(post.ingress, { sanitize: true, renderer }) }} />
         </section>
-        <div dangerouslySetInnerHTML={{ __html: marked(post.body, { sanitize: true, renderer }) }} />
+        {/*<div dangerouslySetInnerHTML={{ __html: marked(post.body, { sanitize: true, renderer }) }} />*/}
       </article>
     );
   };

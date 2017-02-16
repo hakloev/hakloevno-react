@@ -81,7 +81,12 @@ a {
         box-shadow: #ececec 0px 1px 6px, #ececec 0px 1px 4px;
 		padding: 0px 15px 20px 15px;
 		margin-top: 20px;
-		margin-bottom: 20px;
+		margin-bottom: 50px;
+
+        section.article-ingress {
+            margin-top: 30px;
+        }
+
 		header {
 			margin-bottom: 10px;
 			h1 { font-size: 40px; }
