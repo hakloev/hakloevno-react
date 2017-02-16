@@ -6,15 +6,15 @@ import makeRoutes from './routes';
 
 export default class App extends React.Component {
 
-	render() {
-		const { store } = this.props;
+  render() {
+    const { store } = this.props;
 
-		return (
-			<Provider store={store}>
-				<Router history={browserHistory}>
-					{makeRoutes}
-				</Router>
-			</Provider>
-		);
-	}
+    return (
+      <Provider store={store}>
+        <Router history={browserHistory}>
+          {makeRoutes}
+        </Router>
+      </Provider>
+    );
+  }
 }

@@ -5,8 +5,8 @@ import highlight from 'highlightjs';
 import Moment from 'moment';
 
 /*
-	Custom renderer used to render highlight.js in the Post-components.
-	Shamelessly stolen from: http://shuheikagawa.com/blog/2015/09/21/using-highlight-js-with-marked/
+  Custom renderer used to render highlight.js in the Post-components.
+  Shamelessly stolen from: http://shuheikagawa.com/blog/2015/09/21/using-highlight-js-with-marked/
 */
 const renderer = new Renderer();
 renderer.code = (code, language) => {
