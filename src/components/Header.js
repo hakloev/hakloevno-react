@@ -11,8 +11,8 @@ const Header = () => {
 				<Link to="/"><h3>hakloev.no</h3></Link>
 				<nav>
 					<ul>
-						<li><a href="">GitHub</a></li>
-						<li><a href="">Twitter</a></li>
+						<li><a href="https://github.com/hakloev/">GitHub</a></li>
+						<li><a href="https://twitter.com/hakloevdal">Twitter</a></li>
 					</ul>
 				</nav>
 			</div>
