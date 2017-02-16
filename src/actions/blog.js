@@ -1,25 +1,45 @@
 import fetch from 'isomorphic-fetch';
 
-export const FETCH_POST_SUCCESS = 'FETCH_POST_SUCCESS';
+export const POSTS_IS_FETCHING = 'POSTS_IS_FETCHING';
+export const POSTS_FETCH_SUCCESS =  'POSTS_FETCH_SUCCESS';
+export const POSTS_FETCH_HAS_ERROR = 'POSTS_FETCH_HAS_ERROR';
 
-export function fetchPostSuccess(post) {
+export function postsIsFetching(bool) {
   return {
-    type: FETCH_POST_SUCCESS,
-    post,
+    type: POSTS_IS_FETCHING,
+    isFetching: bool,
   };
 }
 
-export function postFetchData() {
+export function postsFetchSuccess(posts) {
+  return {
+    type: POSTS_FETCH_SUCCESS,
+    posts,
+  };
+}
+
+export function postsFetchHasError(bool) {
+  return {
+    type: POSTS_FETCH_HAS_ERROR,
+    hasError: bool,
+  }
+}
+
+export function fetchPosts() {
   return (dispatch) => {
+    dispatch(postsIsFetching(true))
+
     return fetch('http://localhost:3000/api/articles/')
       .then(response => {
+        dispatch(postsIsFetching(false));
         if (!response.ok) {
           throw Error(response.statusText);
         }
+
         return response;
       })
       .then(response => response.json())
-      .then(post => dispatch(fetchPostSuccess(post)))
-      .catch(e => console.error('err in postFetchData', e));
+      .then(posts => dispatch(postsFetchSuccess(posts)))
+      .catch(e => dispatch(postsFetchHasError(true)));
   }
 }

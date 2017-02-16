@@ -1,15 +1,27 @@
 import * as actionTypes from '../actions/blog';
 
 const initalState = {
-  post: null,
+  isFetching: false,
+  hasError: false,
+  articles: [],
 }
 
 function postReducer(state = initalState, action) {
   switch (action.type) {
-    case actionTypes.FETCH_POST_SUCCESS:
+    case actionTypes.POSTS_FETCH_SUCCESS:
       return {
         ...state,
-        post: action.post,
+        articles: action.posts,
+      }
+    case actionTypes.POSTS_FETCH_HAS_ERROR:
+      return {
+        ...state,
+        hasError: action.hasError,
+      }
+    case actionTypes.POSTS_IS_FETCHING:
+      return {
+        ...state,
+        isFetching: action.isFetching,
       }
     default:
       return state;

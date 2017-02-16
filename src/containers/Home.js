@@ -3,13 +3,17 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
 import Posts from '../components/Posts';
-import { postFetchData } from '../actions/blog';
+import { fetchPosts } from '../actions/blog';
 
 
 class Home extends React.Component {
 
   static fetchData({ store }) {
-    return store.dispatch(postFetchData());
+    return store.dispatch(fetchPosts());
+  }
+
+  componentWillMount() {
+    this.props.fetchData();
   }
 
   render() {
@@ -17,7 +21,7 @@ class Home extends React.Component {
       <div id="main-content" className="container">
         <Posts
           fetchData={this.props.fetchData}
-          posts={this.props.post}
+          posts={this.props.posts}
         />
       </div>
     );
@@ -27,13 +31,13 @@ class Home extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    post: state.blog.post,
+    posts: state.blog.articles,
   };
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchData: () => dispatch(postFetchData()),
+    fetchData: () => dispatch(fetchPosts()),
   };
 }
 

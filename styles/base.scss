@@ -41,14 +41,6 @@ a {
 		border-left: 12px solid $orange;
 	}
 }
-.arrow-right {
-    width: 0;
-    height: 0;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-
-    border-right:10px solid blue;
-}
 
 #main-header {
 	background: $dark-grey;
@@ -86,13 +78,14 @@ a {
 
 	article {
 		box-sizing: border-box;
-		padding: 20px 15px;
+        box-shadow: #ececec 0px 1px 6px, #ececec 0px 1px 4px;
+		padding: 0px 15px 20px 15px;
 		margin-top: 20px;
 		margin-bottom: 20px;
 		header {
 			margin-bottom: 10px;
 			h1 { font-size: 40px; }
-			h6 { font-size: 15Ïpx; }
+			h6 { font-size: 15px; margin-top: -5px; }
 		}
 	}
 }
