@@ -1,5 +1,5 @@
 import React from 'react';
-import Post from './Post';
+import PostPreview from './PostPreview';
 
 class Posts extends React.Component {
 
@@ -15,7 +15,7 @@ class Posts extends React.Component {
         {posts
           .filter(post => post.publish)
           .map(post => {
-            return <Post
+            return <PostPreview
               key={post.url}
               data={post}
             />
