@@ -2,19 +2,45 @@ import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
+import Post from '../components/Post';
+
+import { fetchPost } from '../actions/blog';
+
+
 class Article extends React.Component {
-  static fetchData({ store }) {
-    return Promise.resolve();
+  static fetchData({ store, params }) {
+    return store.dispatch(fetchPost(params.slug));
+  }
+
+  componentWillMount() {
+    this.props.fetchData();
   }
 
   render() {
     return (
       <div id="main-content" className="container">
-        <h1>{this.props.params.slug}</h1>
+        {this.props.post &&
+          <section id="article-container">
+            <Post data={this.props.post} />
+          </section>
+        }
         <Link to="/">home</Link>
       </div>
     );
   }
 };
 
-export default connect()(Article);
+const mapStateToProps = (state, ownProps) => {
+  return {
+    post: state.blog.articles[ownProps.params.slug],
+  };
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    fetchData: () => dispatch(fetchPost(ownProps.params.slug)),
+  };
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Article);

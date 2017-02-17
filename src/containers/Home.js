@@ -31,7 +31,7 @@ class Home extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    posts: state.blog.articles,
+    posts: state.blog.ids.map(id => state.blog.articles[id]),
   };
 }
 
