@@ -11,7 +11,7 @@ class PostPreview extends React.Component {
     const { data: post } = this.props;
 
     return (
-      <article className="article-preview">
+      <article className="article article-preview">
         <header>
           <Link to={`/articles/${post.slug}`}><h1>{post.title}</h1></Link>
           <h6>{Moment(post.created).format('dddd, Do of MMMM YYYY')}</h6>
@@ -19,6 +19,9 @@ class PostPreview extends React.Component {
         <section className="article-ingress">
           <div dangerouslySetInnerHTML={{ __html: marked(post.ingress, { sanitize: true, renderer }) }} />
         </section>
+        <div>
+          <Link to={`/articles/${post.slug}`} className="read">Read more</Link>
+        </div>
       </article>
     );
   };

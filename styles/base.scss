@@ -23,7 +23,7 @@ h1 {
 }
 
 h2 {
-  font-size: 24px;
+  font-size: 28px;
   color: #333;
   padding-top: 20px;
   margin-bottom: 5px;
@@ -31,8 +31,8 @@ h2 {
 
 h3 {
   color: #555;
-  font-size: 20px;
-  font-weight: 500;
+  font-size: 26px;
+  font-weight: 400;
   margin-bottom: 5px;
 }
 
@@ -43,7 +43,7 @@ p {
 h4 { font-weight: 500; }
 
 .container {
-  max-width: 1024px;
+  max-width: 840px;
   margin: 0 auto;
 }
 
@@ -91,6 +91,8 @@ h4 { font-weight: 500; }
 
   h3 {
     float: left;
+    font-size: 20px;
+    font-weight: 300;
     margin-left: 20px;
     font-weight: initial;
     color: white;
@@ -108,22 +110,24 @@ h4 { font-weight: 500; }
     margin-top: 20px;
     margin-bottom: 50px;
 
-    section.article-ingress {
-      margin-top: 30px;
-      font-style: italic;
-    }
-
-    section.article-body { margin-top: 30px; }
-
-    header {
-      margin-bottom: 10px;
-      h1 { font-size: 40px; }
-      h6 { font-size: 15px; margin-top: -5px; }
+    .read {
+      color: red;
     }
   }
-}
 
-.article { border: 1px solid $grey; }
+  section.article-ingress {
+    margin-top: 30px;
+    font-style: italic;
+  }
+
+  section.article-body { margin-top: 30px; }
+
+  header {
+    margin-bottom: 10px;
+    h1 { font-size: 40px; }
+    h6 { font-size: 15px; margin-top: -5px; }
+  }
+}
 
 pre > code.hljs {
   margin: 10px 0;
