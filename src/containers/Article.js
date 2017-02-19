@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
 import PostDetail from '../components/PostDetail';
@@ -24,7 +23,6 @@ class Article extends React.Component {
             <PostDetail data={this.props.post} />
           </section>
         }
-        <Link to="/">home</Link>
       </div>
     );
   }

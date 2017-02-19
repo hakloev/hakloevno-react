@@ -11,6 +11,7 @@ import { match, RouterContext } from 'react-router';
 
 import configureStore from './src/configureStore';
 import routes from './src/routes';
+import NotFound from './src/components/NotFound';
 
 const ENVIRONMENT = process.env.NODE_ENV || 'development';
 const PORT = process.env.PORT || 3000;
@@ -25,6 +26,7 @@ app.set('env', ENVIRONMENT);
 app.set('port', PORT);
 
 if (ENVIRONMENT !== 'production') {
+
   const compiler = webpack(config);
 
   app.use(require('webpack-hot-middleware')(compiler, {
@@ -42,6 +44,8 @@ if (ENVIRONMENT !== 'production') {
   }));
 
   app.use(proxy(API_PROXY_ADDRESS)); // proxy all api request to
+} else {
+  app.use('/dist', express.static('dist'));
 }
 
 app.get('*', (request, response) => {
@@ -58,18 +62,19 @@ app.get('*', (request, response) => {
 
       let markup;
       if (renderProps) {
-        fetchInitialData().then(() => {
-          let initialState = serialize(store.getState(), { isJSON: true });
+        fetchInitialData()
+          .then(() => {
+            let initialState = serialize(store.getState(), { isJSON: true });
 
-          markup = renderToString(
-            <Provider store={store}>
-              {<RouterContext {...renderProps} />}
-            </Provider>
-          )
+            markup = renderToString(
+              <Provider store={store}>
+                {<RouterContext {...renderProps} />}
+              </Provider>
+            )
 
-          return response.render('index', { markup, initialState, });
-        })
-          .catch(e => console.log(e));
+            return response.render('index', { markup, initialState, });
+          })
+          .catch(err => console.error(`[match][fetchInitialData] Error: ${err}`));
 
         function fetchInitialData() {
           let { query, params } = renderProps;
@@ -82,15 +87,15 @@ app.get('*', (request, response) => {
         }
 
       } else {
-        // markup = renderToString(<NotFound />);
-        response.status(404).send('Not Found'); // TODO: <NotFound /> component here
+        markup = renderToString(<NotFound />);
+        response.status(404).render('index', { markup }); // TODO: <NotFound /> component here
       }
     });
 });
 
 app.listen(PORT, err => {
   if (err) {
-    console.error(err);
+    console.error(`[app][listen] Error: ${err}`);
     return;
   }
 

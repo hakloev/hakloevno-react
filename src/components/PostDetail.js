@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router';
 import marked from 'marked';
 import Moment from 'moment';
 
@@ -12,9 +11,9 @@ class PostDetail extends React.Component {
     const { data: post } = this.props;
 
     return (
-      <article className="article-detail">
+      <article className="article article-detail">
         <header>
-          <Link to={`/articles/${post.slug}`}><h1>{post.title}</h1></Link>
+          <h1>{post.title}</h1>
           <h6>{Moment(post.created).format('dddd, Do of MMMM YYYY')}</h6>
         </header>
         <section className="article-ingress">

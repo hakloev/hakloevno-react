@@ -1,0 +1,20 @@
+import React from 'react';
+import { connect } from 'react-redux';
+
+
+class NotFound extends React.Component {
+  static fetchData({ store }) {
+    return Promise.resolve();
+  }
+
+  render() {
+    return (
+      <section id="main-content" className="container">
+        <h1>Not Found</h1>
+      </section>
+    )
+  }
+}
+
+
+export default connect()(NotFound);

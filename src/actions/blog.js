@@ -57,7 +57,7 @@ export function fetchPosts() {
   return (dispatch) => {
     dispatch(postsIsFetching(true))
 
-    return fetch('http://localhost:3000/api/articles/')
+    return fetch('/api/articles/')
       .then(response => {
         dispatch(postsIsFetching(false));
         if (!response.ok) {
@@ -76,7 +76,7 @@ export function fetchPost(slug) {
   return (dispatch) => {
     dispatch(postIsFetching(true))
 
-    return fetch(`http://localhost:3000/api/articles/${slug}`)
+    return fetch(`/api/articles/${slug}`)
       .then(response => {
         dispatch(postIsFetching(false));
         if (!response.ok) {
