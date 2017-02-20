@@ -1,0 +1,8 @@
+pipeline:
+    docker:
+        image: plugins/docker
+        repo: registry.hakloev.no/hakloevno/frontend
+        tags:
+            - latest
+        when:
+            branch: master
