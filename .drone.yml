@@ -1,7 +1,8 @@
 pipeline:
-    docker:
+    publish:
         image: plugins/docker
-        repo: registry.hakloev.no/hakloevno/frontend
+        registry: registry.hakloev.no
+        repo: hakloevno/frontend
         insecure: true
         tags:
             - latest
