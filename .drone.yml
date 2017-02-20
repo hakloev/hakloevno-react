@@ -1,8 +1,7 @@
 pipeline:
     publish:
         image: plugins/docker
-        registry: registry.hakloev.no
-        repo: hakloevno/frontend
+        repo: registry.hakloev.no/hakloevno/frontend
         tags:
             - latest
         when:
