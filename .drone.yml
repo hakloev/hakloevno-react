@@ -3,7 +3,6 @@ pipeline:
         image: plugins/docker
         registry: registry.hakloev.no
         repo: hakloevno/frontend
-        insecure: true
         tags:
             - latest
         when:
