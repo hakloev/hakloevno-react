@@ -13,5 +13,6 @@ COPY . /usr/src/app
 RUN npm run build
 
 EXPOSE 3000
+EXPOSE 80
 
 CMD ["sh", "docker-entrypoint.sh"]
