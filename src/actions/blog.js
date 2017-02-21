@@ -1,4 +1,5 @@
-import fetch from 'isomorphic-fetch';
+require('es6-promise').polyfill();
+require('isomorphic-fetch');
 
 export const POSTS_IS_FETCHING = 'POSTS_IS_FETCHING';
 export const POSTS_FETCH_SUCCESS =  'POSTS_FETCH_SUCCESS';
