@@ -16,6 +16,16 @@ class Article extends React.Component {
   }
 
   render() {
+    console.log(this.props);
+
+    if(this.props.hasError) {
+      return <h1>Error while loading</h1>
+    }
+
+    if (this.props.post === undefined) {
+      return <h1>Unfortunately, I can't seem to find this particular post...</h1>
+    }
+
     return (
       <div id="main-content" className="container">
         {this.props.post &&
@@ -31,6 +41,7 @@ class Article extends React.Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     post: state.blog.articles[ownProps.params.slug],
+    hasError: state.blog.hasError,
   };
 }
 

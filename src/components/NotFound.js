@@ -10,7 +10,7 @@ class NotFound extends React.Component {
   render() {
     return (
       <section id="main-content" className="container">
-        <h1>Not Found</h1>
+        <h1>Unfortunately, you tried to access a non-existing page...</h1>
       </section>
     )
   }
