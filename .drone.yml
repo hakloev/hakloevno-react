@@ -1,7 +1,8 @@
 pipeline:
-    publish:
+    docker:
         image: plugins/docker
         repo: registry.hakloev.no/hakloevno/frontend
+        debug: true
         tags:
             - latest
         when:
