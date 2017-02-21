@@ -1,5 +1,6 @@
-require('es6-promise').polyfill();
-require('isomorphic-fetch');
+// require('es6-promise').polyfill();
+// require('isomorphic-fetch');
+import axios from 'axios';
 
 export const POSTS_IS_FETCHING = 'POSTS_IS_FETCHING';
 export const POSTS_FETCH_SUCCESS =  'POSTS_FETCH_SUCCESS';
@@ -58,18 +59,16 @@ export function fetchPosts() {
   return (dispatch) => {
     dispatch(postsIsFetching(true))
 
-    return fetch('/api/articles/')
+    return axios.get('/api/articles/')
       .then(response => {
+        console.log('response', response);
         dispatch(postsIsFetching(false));
-        if (!response.ok) {
-          throw Error(response.statusText);
-        }
-
-        return response;
+        dispatch(postsFetchSuccess(response.data));
       })
-      .then(response => response.json())
-      .then(posts => dispatch(postsFetchSuccess(posts)))
-      .catch(e => dispatch(postsFetchHasError(true)));
+      .catch(e => {
+        dispatch(postsFetchHasError(true));
+        console.log('Error fetchPosts', e);
+      });
   }
 }
 

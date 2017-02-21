@@ -17,6 +17,7 @@
   "author": "Håkon Ødegård Løvdal",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.15.3",
     "babel-cli": "^6.22.2",
     "babel-core": "^6.22.1",
     "babel-loader": "^6.2.10",
