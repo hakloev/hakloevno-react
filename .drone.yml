@@ -1,7 +1,8 @@
 pipeline:
-    publish:
+    docker:
         image: plugins/docker
         repo: registry.hakloev.no/hakloevno/frontend
+        registry: registry.hakloev.no
         tags: [ latest ]
         when:
             branch: master
