@@ -1,5 +1,5 @@
 pipeline:
-    docker:
+    publish:
         image: plugins/docker
         repo: registry.hakloev.no/hakloevno/frontend
         debug: true
