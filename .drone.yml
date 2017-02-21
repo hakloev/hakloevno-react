@@ -2,9 +2,6 @@ pipeline:
     publish:
         image: plugins/docker
         repo: registry.hakloev.no/hakloevno/frontend
-        username: ${DOCKER_USERNAME}
-        password: ${DOCKER_PASSWORD}
-        tags:
-            - latest
+        tags: [ latest ]
         when:
             branch: master
