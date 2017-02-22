@@ -1,6 +1,7 @@
 // require('es6-promise').polyfill();
 // require('isomorphic-fetch');
 import axios from 'axios';
+import { getBaseURL } from '../utils';
 
 export const POSTS_IS_FETCHING = 'POSTS_IS_FETCHING';
 export const POSTS_FETCH_SUCCESS =  'POSTS_FETCH_SUCCESS';
@@ -59,7 +60,7 @@ export function fetchPosts() {
   return (dispatch) => {
     dispatch(postsIsFetching(true))
 
-    return axios.get('/api/articles/')
+    return axios.get(`${getBaseURL()}/api/articles/`)
       .then(response => {
         console.log('response', response);
         dispatch(postsIsFetching(false));

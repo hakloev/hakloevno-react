@@ -5,16 +5,19 @@ import ReactDOM from 'react-dom';
 
 require('../styles/base.scss');
 
+import axios from 'axios';
+
 import App from './App';
 import HMRContainer from './containers/HMRContainer';
 import makeRoutes from './routes';
 import configureStore from './configureStore';
 
+
 const appMount = document.getElementById('app');
 
 const preloadedState = window.__INITIAL_STATE__;
-
 delete window.__INITIAL_STATE__ // Remove the inital state from window after initializing
+window.__CLIENT__ = true;
 
 const store = configureStore(preloadedState);
 

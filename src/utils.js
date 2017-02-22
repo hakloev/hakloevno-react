@@ -1,5 +1,21 @@
+import axios from 'axios';
+
+import config from '../config';
+
 import { Renderer } from 'marked';
 import highlight from 'highlightjs';
+
+// const baseURL = typeof window === 'undefined' ? process.env.BASE_URL || (`http://localhost:${Config.port}`) : '';
+
+const getBaseURL = () => {
+  if (__CLIENT__) {
+    return window.location.origin;
+  } else if (process.env.IS_DOCKER == 'true') {
+    return `http://${config.hosts.django}:${config.ports.django}`
+  } else {
+    return `http://localhost:${config.ports.server}`;
+  }
+}
 
 /*
   Custom renderer used to render highlight.js in the Post-components.
@@ -17,4 +33,5 @@ renderer.code = (code, language) => {
 
 export {
   renderer,
+  getBaseURL,
 }

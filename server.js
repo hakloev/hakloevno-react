@@ -9,24 +9,24 @@ import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
 import { match, RouterContext } from 'react-router';
 
+import appConfig from './config';
+
 import configureStore from './src/configureStore';
 import routes from './src/routes';
 import NotFound from './src/components/NotFound';
 
-const ENVIRONMENT = process.env.NODE_ENV || 'development';
-const PORT = process.env.PORT || 3000;
-const API_PROXY_ADDRESS = 'http://127.0.0.1:8000/api';
+global.__CLIENT__ = false;
 
+const ENVIRONMENT = process.env.NODE_ENV || 'development';
 
 const app = express();
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 app.set('env', ENVIRONMENT);
-app.set('port', PORT);
+app.set('port', appConfig.ports.server);
 
 if (ENVIRONMENT !== 'production') {
-
   const compiler = webpack(config);
 
   app.use(require('webpack-hot-middleware')(compiler, {
@@ -43,7 +43,8 @@ if (ENVIRONMENT !== 'production') {
     }
   }));
 
-  app.use(proxy(API_PROXY_ADDRESS)); // proxy all api request to
+  app.use(proxy(appConfig.proxy.apiProxy)); // proxy all api request to
+
 } else {
   app.use('/dist', express.static('dist'));
 }
@@ -93,11 +94,11 @@ app.get('*', (request, response) => {
     });
 });
 
-app.listen(PORT, err => {
+app.listen(appConfig.ports.server, err => {
   if (err) {
     console.error(`[app][listen] Error: ${err}`);
     return;
   }
 
-  console.log(`The server is running on port ${PORT} [${ENVIRONMENT}]`);
+  console.log(`The server is running on port ${appConfig.ports.server} [${ENVIRONMENT}]`);
 })
