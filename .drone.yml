@@ -13,6 +13,7 @@ pipeline:
             event: push
             branch: master
         host: hakloev.no
+        user: hakloev
         port: 723
         script:
             - docker pull registry.hakloev.no/hakloevno/frontend:latest
