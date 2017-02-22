@@ -58,39 +58,34 @@ export function postFetchHasError(bool) {
 /* ASYNC FETCH ACTIONS */
 export function fetchPosts() {
   return (dispatch) => {
-    dispatch(postsIsFetching(true))
+    dispatch(postsFetchHasError(false));
+    dispatch(postsIsFetching(true));
 
     return axios.get(`${getBaseURL()}/api/articles/`)
       .then(response => {
-        console.log('response', response);
         dispatch(postsIsFetching(false));
         dispatch(postsFetchSuccess(response.data));
       })
       .catch(e => {
         dispatch(postsFetchHasError(true));
-        console.log('Error fetchPosts', e);
+        console.error('[fetchPosts]', e);
       });
   }
 }
 
 export function fetchPost(slug) {
   return (dispatch) => {
-    dispatch(postIsFetching(true))
+    dispatch(postFetchHasError(false));
+    dispatch(postIsFetching(true));
 
-    return fetch(`/api/articles/${slug}`)
+    return axios.get(`${getBaseURL()}/api/articles/${slug}`)
       .then(response => {
         dispatch(postIsFetching(false));
-        if (!response.ok) {
-          throw Error(response.statusText);
-        }
-
-        return response;
+        dispatch(postFetchSuccess(response.data));
       })
-      .then(response => response.json())
-      .then(post => dispatch(postFetchSuccess(post)))
       .catch(e => {
-        console.log(e);
         dispatch(postFetchHasError(true));
+        console.log('[fetchPost]', e);
       });
   }
 }

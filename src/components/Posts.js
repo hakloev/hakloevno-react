@@ -7,7 +7,7 @@ class Posts extends React.Component {
     const { posts } = this.props;
 
     if (posts.length === 0) {
-      return <h1>No posts found...</h1>
+      <h1>Unfortunately, I can't seem to find any posts...</h1>
     }
 
     return (
