@@ -6,7 +6,7 @@ module.exports = {
 
   ports: {
     server: process.env.PORT ? process.env.PORT : 3000,
-    django: process.env.DJANGO_PORT ? process.env.DJANGO_PORT : 8081,  # HTTP port for django in Docker
+    django: process.env.DJANGO_PORT ? process.env.DJANGO_PORT : 8081,  // HTTP port for django in Docker
   },
 
   proxy: {
