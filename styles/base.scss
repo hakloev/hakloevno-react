@@ -142,3 +142,18 @@ code.hljs {
   padding: 5px 15px;
   font-family: monospace;
 }
+
+@media only screen and (max-width: 786px) {
+  .container {
+    width: 80%;
+  }
+}
+
+@media (max-width: 880px) {
+  .container {
+    width: 85%;
+  }
+  #main-header > .container {
+    width: 100%;
+  }
+}
