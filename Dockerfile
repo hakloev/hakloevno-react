@@ -4,7 +4,7 @@ RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 # RUN npm install -g yarn --silent
-RUN npm install -g yarn
+RUN npm install yarn
 
 COPY package.json /usr/src/app/
 RUN yarn
